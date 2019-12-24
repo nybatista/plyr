@@ -8941,10 +8941,18 @@ typeof navigator === "object" && (function (Raven, Shr) {
 	    var controlsLevel_1 = createElement('div', {
 	      id: "plyr__controls_level_1"
 	    });
+	    var controlsLevel_1_btns = createElement('div', {
+	      id: "plyr__controls_level_1__btns"
+	    });
 	    var controlsLevel_2 = createElement('div', {
 	      id: "plyr__controls_level_2"
 	    });
+	    var volumeVertical = createElement('div', {
+	      id: "plyr__controls_volume_vertical"
+	    });
 	    container.appendChild(controlsLevel_1);
+	    controlsLevel_1.appendChild(volumeVertical);
+	    controlsLevel_1.appendChild(controlsLevel_1_btns);
 	    container.appendChild(controlsLevel_2); // Default item attributes
 
 	    var defaultAttributes = {
@@ -8954,22 +8962,22 @@ typeof navigator === "object" && (function (Raven, Shr) {
 	    dedupe(this.config.controls).forEach(function (control) {
 	      // Restart button
 	      if (control === 'restart') {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'restart', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'restart', defaultAttributes));
 	      } // Rewind button
 
 
 	      if (control === 'rewind') {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'rewind', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'rewind', defaultAttributes));
 	      } // Play/Pause button
 
 
 	      if (control === 'play') {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'play', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'play', defaultAttributes));
 	      } // Fast forward button
 
 
 	      if (control === 'fast-forward') {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'fast-forward', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'fast-forward', defaultAttributes));
 	      } // Progress
 
 
@@ -9001,12 +9009,12 @@ typeof navigator === "object" && (function (Raven, Shr) {
 
 
 	      if (control === 'current-time') {
-	        controlsLevel_1.appendChild(createTime.call(_this10, 'currentTime', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createTime.call(_this10, 'currentTime', defaultAttributes));
 	      } // Media duration display
 
 
 	      if (control === 'duration') {
-	        controlsLevel_1.appendChild(createTime.call(_this10, 'duration', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createTime.call(_this10, 'duration', defaultAttributes));
 	      } // Volume controls
 
 
@@ -9018,12 +9026,12 @@ typeof navigator === "object" && (function (Raven, Shr) {
 	            class: "".concat(defaultAttributes.class, " plyr__volume").trim()
 	          }));
 	          _this10.elements.volume = volume;
-	          controlsLevel_1.appendChild(volume);
+	          volumeVertical.appendChild(volume);
 	        } // Toggle mute button
 
 
 	        if (control === 'mute') {
-	          controlsLevel_1.appendChild(createButton.call(_this10, 'mute'));
+	          volumeVertical.appendChild(createButton.call(_this10, 'mute'));
 	        } // Volume range control
 
 
@@ -9043,7 +9051,7 @@ typeof navigator === "object" && (function (Raven, Shr) {
 
 
 	      if (control === 'captions') {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'captions', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'captions', defaultAttributes));
 	      } // Settings button / menu
 
 
@@ -9146,19 +9154,19 @@ typeof navigator === "object" && (function (Raven, Shr) {
 
 	        popup.appendChild(inner);
 	        wrapper.appendChild(popup);
-	        controlsLevel_1.appendChild(wrapper);
+	        controlsLevel_1_btns.appendChild(wrapper);
 	        _this10.elements.settings.popup = popup;
 	        _this10.elements.settings.menu = wrapper;
 	      } // Picture in picture button
 
 
 	      if (control === 'pip' && support.pip) {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'pip', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'pip', defaultAttributes));
 	      } // Airplay button
 
 
 	      if (control === 'airplay' && support.airplay) {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'airplay', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'airplay', defaultAttributes));
 	      } // Download button
 
 
@@ -9178,12 +9186,12 @@ typeof navigator === "object" && (function (Raven, Shr) {
 	          });
 	        }
 
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'download', _attributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'download', _attributes));
 	      } // Toggle fullscreen button
 
 
 	      if (control === 'fullscreen') {
-	        controlsLevel_1.appendChild(createButton.call(_this10, 'fullscreen', defaultAttributes));
+	        controlsLevel_1_btns.appendChild(createButton.call(_this10, 'fullscreen', defaultAttributes));
 	      }
 	    }); // Set available quality levels
 

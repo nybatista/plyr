@@ -1283,8 +1283,12 @@ const controls = {
         this.elements.controls = container;
 
         const controlsLevel_1 = createElement('div', {id:"plyr__controls_level_1"});
+        const controlsLevel_1_btns = createElement('div', {id:"plyr__controls_level_1__btns"});
         const controlsLevel_2 = createElement('div', {id:"plyr__controls_level_2"});
+        const volumeVertical = createElement('div', {id:"plyr__controls_volume_vertical"});
         container.appendChild(controlsLevel_1);
+        controlsLevel_1.appendChild(volumeVertical);
+        controlsLevel_1.appendChild(controlsLevel_1_btns);
         container.appendChild(controlsLevel_2);
 
         // Default item attributes
@@ -1294,22 +1298,22 @@ const controls = {
         dedupe(this.config.controls).forEach(control => {
             // Restart button
             if (control === 'restart') {
-                controlsLevel_1.appendChild(createButton.call(this, 'restart', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'restart', defaultAttributes));
             }
 
             // Rewind button
             if (control === 'rewind') {
-                controlsLevel_1.appendChild(createButton.call(this, 'rewind', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'rewind', defaultAttributes));
             }
 
             // Play/Pause button
             if (control === 'play') {
-                controlsLevel_1.appendChild(createButton.call(this, 'play', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'play', defaultAttributes));
             }
 
             // Fast forward button
             if (control === 'fast-forward') {
-                controlsLevel_1.appendChild(createButton.call(this, 'fast-forward', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'fast-forward', defaultAttributes));
             }
 
             // Progress
@@ -1353,12 +1357,12 @@ const controls = {
 
             // Media current time display
             if (control === 'current-time') {
-                controlsLevel_1.appendChild(createTime.call(this, 'currentTime', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createTime.call(this, 'currentTime', defaultAttributes));
             }
 
             // Media duration display
             if (control === 'duration') {
-                controlsLevel_1.appendChild(createTime.call(this, 'duration', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createTime.call(this, 'duration', defaultAttributes));
             }
 
             // Volume controls
@@ -1376,12 +1380,12 @@ const controls = {
 
                     this.elements.volume = volume;
 
-                    controlsLevel_1.appendChild(volume);
+                    volumeVertical.appendChild(volume);
                 }
 
                 // Toggle mute button
                 if (control === 'mute') {
-                    controlsLevel_1.appendChild(createButton.call(this, 'mute'));
+                    volumeVertical.appendChild(createButton.call(this, 'mute'));
                 }
 
                 // Volume range control
@@ -1408,7 +1412,7 @@ const controls = {
 
             // Toggle captions button
             if (control === 'captions') {
-                controlsLevel_1.appendChild(createButton.call(this, 'captions', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'captions', defaultAttributes));
             }
 
             // Settings button / menu
@@ -1562,7 +1566,7 @@ const controls = {
 
                 popup.appendChild(inner);
                 wrapper.appendChild(popup);
-                controlsLevel_1.appendChild(wrapper);
+                controlsLevel_1_btns.appendChild(wrapper);
 
                 this.elements.settings.popup = popup;
                 this.elements.settings.menu = wrapper;
@@ -1570,12 +1574,12 @@ const controls = {
 
             // Picture in picture button
             if (control === 'pip' && support.pip) {
-                controlsLevel_1.appendChild(createButton.call(this, 'pip', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'pip', defaultAttributes));
             }
 
             // Airplay button
             if (control === 'airplay' && support.airplay) {
-                controlsLevel_1.appendChild(createButton.call(this, 'airplay', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'airplay', defaultAttributes));
             }
 
             // Download button
@@ -1595,12 +1599,12 @@ const controls = {
                     });
                 }
 
-                controlsLevel_1.appendChild(createButton.call(this, 'download', attributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'download', attributes));
             }
 
             // Toggle fullscreen button
             if (control === 'fullscreen') {
-                controlsLevel_1.appendChild(createButton.call(this, 'fullscreen', defaultAttributes));
+                controlsLevel_1_btns.appendChild(createButton.call(this, 'fullscreen', defaultAttributes));
             }
         });
 
