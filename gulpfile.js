@@ -247,6 +247,7 @@ gulp.task('watch', () => {
 
 // Build distribution
 gulp.task('build', gulp.series(tasks.clean, gulp.parallel(...tasks.js, ...tasks.css, ...tasks.sprite)));
+gulp.task('buildSprite', gulp.series(gulp.parallel(...tasks.sprite)));
 
 // Default gulp task
 gulp.task('default', gulp.series('build', 'watch'));

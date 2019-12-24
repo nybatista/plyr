@@ -30,16 +30,18 @@
     "browserslist": "> 1%",
     "scripts": {
         "build": "gulp build",
+        "buildSprite": "gulp buildSprite && npm run-script copySprite",
         "lint": "eslint src/js && npm run-script remark",
+        "copySprite": "cp dist/plyr.svg ~/sites/ms85fb/src/static/imgs/svg/video-chrome/plyr.svg",
         "lint:fix": "eslint --fix src/js",
         "remark": "remark -f --use 'validate-links=repository:\"sampotts/plyr\"' '{,!(node_modules),.?**/}*.md'",
         "deploy": "yarn lint && gulp deploy"
     },
     "devDependencies": {
-        "ansi-colors": "^4.0.1",
-        "aws-sdk": "^2.478.0",
         "@babel/core": "^7.4.5",
         "@babel/preset-env": "^7.4.5",
+        "ansi-colors": "^4.0.1",
+        "aws-sdk": "^2.478.0",
         "babel-eslint": "^10.0.2",
         "del": "^4.1.1",
         "eslint": "^5.16.0",
