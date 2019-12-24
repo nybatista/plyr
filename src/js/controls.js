@@ -1285,13 +1285,15 @@ const controls = {
         const controlsLevel_1 = createElement('div', {id:"plyr__controls_level_1"});
         const controlsLevel_1_left = createElement('div', {id:"plyr__controls_level_1--left"});
         const controlsLevel_1_right = createElement('div', {id:"plyr__controls_level_1--right"});
-        const controlsLevel_1_btns = createElement('div', {id:"plyr__controls_level_1__btns"});
+        const controlsLevel_1_timeAndDuration = createElement('div', {id:"plyr__controls_level_1--time-and-duration"});
         const volumeVertical = createElement('div', {id:"plyr__controls_volume_vertical"});
+        const controlsLevel_1_btns = createElement('div', {id:"plyr__controls_level_1__btns"});
 
         const controlsLevel_2 = createElement('div', {id:"plyr__controls_level_2"});
         container.appendChild(controlsLevel_1);
         controlsLevel_1.appendChild(controlsLevel_1_left);
         controlsLevel_1.appendChild(controlsLevel_1_right);
+        controlsLevel_1_right.appendChild(controlsLevel_1_timeAndDuration);
         controlsLevel_1_right.appendChild(volumeVertical);
         controlsLevel_1_right.appendChild(controlsLevel_1_btns);
         container.appendChild(controlsLevel_2);
@@ -1362,12 +1364,12 @@ const controls = {
 
             // Media current time display
             if (control === 'current-time') {
-                controlsLevel_1_btns.appendChild(createTime.call(this, 'currentTime', defaultAttributes));
+                controlsLevel_1_timeAndDuration.appendChild(createTime.call(this, 'currentTime', defaultAttributes));
             }
 
             // Media duration display
             if (control === 'duration') {
-                controlsLevel_1_btns.appendChild(createTime.call(this, 'duration', defaultAttributes));
+                controlsLevel_1_timeAndDuration.appendChild(createTime.call(this, 'duration', defaultAttributes));
             }
 
             // Volume controls

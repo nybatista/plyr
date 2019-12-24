@@ -8947,11 +8947,14 @@ typeof navigator === "object" && (function (Raven, Shr) {
 	    var controlsLevel_1_right = createElement('div', {
 	      id: "plyr__controls_level_1--right"
 	    });
-	    var controlsLevel_1_btns = createElement('div', {
-	      id: "plyr__controls_level_1__btns"
+	    var controlsLevel_1_timeAndDuration = createElement('div', {
+	      id: "plyr__controls_level_1--time-and-duration"
 	    });
 	    var volumeVertical = createElement('div', {
 	      id: "plyr__controls_volume_vertical"
+	    });
+	    var controlsLevel_1_btns = createElement('div', {
+	      id: "plyr__controls_level_1__btns"
 	    });
 	    var controlsLevel_2 = createElement('div', {
 	      id: "plyr__controls_level_2"
@@ -8959,6 +8962,7 @@ typeof navigator === "object" && (function (Raven, Shr) {
 	    container.appendChild(controlsLevel_1);
 	    controlsLevel_1.appendChild(controlsLevel_1_left);
 	    controlsLevel_1.appendChild(controlsLevel_1_right);
+	    controlsLevel_1_right.appendChild(controlsLevel_1_timeAndDuration);
 	    controlsLevel_1_right.appendChild(volumeVertical);
 	    controlsLevel_1_right.appendChild(controlsLevel_1_btns);
 	    container.appendChild(controlsLevel_2); // Default item attributes
@@ -9017,12 +9021,12 @@ typeof navigator === "object" && (function (Raven, Shr) {
 
 
 	      if (control === 'current-time') {
-	        controlsLevel_1_btns.appendChild(createTime.call(_this10, 'currentTime', defaultAttributes));
+	        controlsLevel_1_timeAndDuration.appendChild(createTime.call(_this10, 'currentTime', defaultAttributes));
 	      } // Media duration display
 
 
 	      if (control === 'duration') {
-	        controlsLevel_1_btns.appendChild(createTime.call(_this10, 'duration', defaultAttributes));
+	        controlsLevel_1_timeAndDuration.appendChild(createTime.call(_this10, 'duration', defaultAttributes));
 	      } // Volume controls
 
 
