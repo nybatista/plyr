@@ -60,6 +60,10 @@ function _iterableToArray(iter) {
 }
 
 function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -109,7 +113,7 @@ function matches(element, selector) {
     return Array.from(document.querySelectorAll(selector)).includes(this);
   }
 
-  var matches = match;
+  var matches =  match;
   return matches.call(element, selector);
 }
 
@@ -570,7 +574,7 @@ function repaint(element, delay) {
 var browser = {
   isIE:
   /* @cc_on!@ */
-  !!document.documentMode,
+   !!document.documentMode,
   isEdge: window.navigator.userAgent.includes('Edge'),
   isWebkit: 'WebkitAppearance' in document.documentElement.style && !/Edge/.test(navigator.userAgent),
   isIPhone: /(iPhone|iPod)/gi.test(navigator.platform),
@@ -923,9 +927,6 @@ function getAttributesFromSelector(sel, existingAttributes) {
         // Attribute selector
         attributes[key] = value;
         break;
-
-      default:
-        break;
     }
   });
   return extend(existing, attributes);
@@ -977,7 +978,7 @@ function matches$1(element, selector) {
     return Array.from(document.querySelectorAll(selector)).includes(this);
   }
 
-  var method = match;
+  var method =  match;
   return method.call(element, selector);
 } // Find all elements
 
@@ -2112,9 +2113,6 @@ var controls = {
         case 'speed':
           _this3.speed = parseFloat(value);
           break;
-
-        default:
-          break;
       }
 
       controls.showMenuPanel.call(_this3, 'home', is$1.keyboardEvent(event));
@@ -2222,9 +2220,6 @@ var controls = {
         case 'playing':
         case 'progress':
           setProgress(this.elements.display.buffer, this.buffered * 100);
-          break;
-
-        default:
           break;
       }
     }
@@ -2799,7 +2794,15 @@ var controls = {
 
 
     var container = createElement('div', getAttributesFromSelector(this.config.selectors.controls.wrapper));
-    this.elements.controls = container; // Default item attributes
+    this.elements.controls = container;
+    var controlsLevel_1 = createElement('div', {
+      id: "plyr__controls_level_1"
+    });
+    var controlsLevel_2 = createElement('div', {
+      id: "plyr__controls_level_2"
+    });
+    container.appendChild(controlsLevel_1);
+    container.appendChild(controlsLevel_2); // Default item attributes
 
     var defaultAttributes = {
       class: 'plyr__controls__item'
@@ -2808,22 +2811,22 @@ var controls = {
     dedupe(this.config.controls).forEach(function (control) {
       // Restart button
       if (control === 'restart') {
-        container.appendChild(createButton.call(_this10, 'restart', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'restart', defaultAttributes));
       } // Rewind button
 
 
       if (control === 'rewind') {
-        container.appendChild(createButton.call(_this10, 'rewind', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'rewind', defaultAttributes));
       } // Play/Pause button
 
 
       if (control === 'play') {
-        container.appendChild(createButton.call(_this10, 'play', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'play', defaultAttributes));
       } // Fast forward button
 
 
       if (control === 'fast-forward') {
-        container.appendChild(createButton.call(_this10, 'fast-forward', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'fast-forward', defaultAttributes));
       } // Progress
 
 
@@ -2850,17 +2853,17 @@ var controls = {
 
         _this10.elements.progress = progress;
         progressContainer.appendChild(_this10.elements.progress);
-        container.appendChild(progressContainer);
+        controlsLevel_2.appendChild(progressContainer);
       } // Media current time display
 
 
       if (control === 'current-time') {
-        container.appendChild(createTime.call(_this10, 'currentTime', defaultAttributes));
+        controlsLevel_1.appendChild(createTime.call(_this10, 'currentTime', defaultAttributes));
       } // Media duration display
 
 
       if (control === 'duration') {
-        container.appendChild(createTime.call(_this10, 'duration', defaultAttributes));
+        controlsLevel_1.appendChild(createTime.call(_this10, 'duration', defaultAttributes));
       } // Volume controls
 
 
@@ -2872,12 +2875,12 @@ var controls = {
             class: "".concat(defaultAttributes.class, " plyr__volume").trim()
           }));
           _this10.elements.volume = volume;
-          container.appendChild(volume);
+          controlsLevel_1.appendChild(volume);
         } // Toggle mute button
 
 
         if (control === 'mute') {
-          volume.appendChild(createButton.call(_this10, 'mute'));
+          controlsLevel_1.appendChild(createButton.call(_this10, 'mute'));
         } // Volume range control
 
 
@@ -2897,7 +2900,7 @@ var controls = {
 
 
       if (control === 'captions') {
-        container.appendChild(createButton.call(_this10, 'captions', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'captions', defaultAttributes));
       } // Settings button / menu
 
 
@@ -3000,19 +3003,19 @@ var controls = {
 
         popup.appendChild(inner);
         wrapper.appendChild(popup);
-        container.appendChild(wrapper);
+        controlsLevel_1.appendChild(wrapper);
         _this10.elements.settings.popup = popup;
         _this10.elements.settings.menu = wrapper;
       } // Picture in picture button
 
 
       if (control === 'pip' && support.pip) {
-        container.appendChild(createButton.call(_this10, 'pip', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'pip', defaultAttributes));
       } // Airplay button
 
 
       if (control === 'airplay' && support.airplay) {
-        container.appendChild(createButton.call(_this10, 'airplay', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'airplay', defaultAttributes));
       } // Download button
 
 
@@ -3032,12 +3035,12 @@ var controls = {
           });
         }
 
-        container.appendChild(createButton.call(_this10, 'download', _attributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'download', _attributes));
       } // Toggle fullscreen button
 
 
       if (control === 'fullscreen') {
-        container.appendChild(createButton.call(_this10, 'fullscreen', defaultAttributes));
+        controlsLevel_1.appendChild(createButton.call(_this10, 'fullscreen', defaultAttributes));
       }
     }); // Set available quality levels
 
@@ -4649,19 +4652,6 @@ function () {
             // L key
             player.loop = !player.loop;
             break;
-
-          /* case 73:
-              this.setLoop('start');
-              break;
-           case 76:
-              this.setLoop();
-              break;
-           case 79:
-              this.setLoop('end');
-              break; */
-
-          default:
-            break;
         } // Escape is handle natively when in full screen
         // So we only need to worry about non native
 
@@ -4881,10 +4871,11 @@ function () {
       }); // Check for audio tracks on load
       // We can't use `loadedmetadata` as it doesn't seem to have audio tracks at that point
 
-      on.call(player, player.media, 'canplay loadeddata', function () {
-        toggleHidden(elements.volume, !player.hasAudio);
-        toggleHidden(elements.buttons.mute, !player.hasAudio);
-      }); // Handle the media finishing
+      /*        on.call(player, player.media, 'canplay loadeddata', () => {
+                  toggleHidden(elements.volume, !player.hasAudio);
+                  toggleHidden(elements.buttons.mute, !player.hasAudio);
+              });*/
+      // Handle the media finishing
 
       on.call(player, player.media, 'ended', function () {
         // Show poster on end
@@ -6314,9 +6305,6 @@ var youtube = {
 
               assurePlaybackState$1.call(player, false);
               break;
-
-            default:
-              break;
           }
 
           triggerEvent.call(player, player.elements.container, 'statechange', false, {
@@ -6729,9 +6717,6 @@ function () {
             this.player.debug.warn("Non-fatal ad error: ".concat(adData.adError.getMessage()));
           }
 
-          break;
-
-        default:
           break;
       }
     }

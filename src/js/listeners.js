@@ -379,10 +379,10 @@ class Listeners {
 
         // Check for audio tracks on load
         // We can't use `loadedmetadata` as it doesn't seem to have audio tracks at that point
-        on.call(player, player.media, 'canplay loadeddata', () => {
+/*        on.call(player, player.media, 'canplay loadeddata', () => {
             toggleHidden(elements.volume, !player.hasAudio);
             toggleHidden(elements.buttons.mute, !player.hasAudio);
-        });
+        });*/
 
         // Handle the media finishing
         on.call(player, player.media, 'ended', () => {
