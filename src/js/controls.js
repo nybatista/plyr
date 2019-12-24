@@ -1283,12 +1283,17 @@ const controls = {
         this.elements.controls = container;
 
         const controlsLevel_1 = createElement('div', {id:"plyr__controls_level_1"});
+        const controlsLevel_1_left = createElement('div', {id:"plyr__controls_level_1--left"});
+        const controlsLevel_1_right = createElement('div', {id:"plyr__controls_level_1--right"});
         const controlsLevel_1_btns = createElement('div', {id:"plyr__controls_level_1__btns"});
-        const controlsLevel_2 = createElement('div', {id:"plyr__controls_level_2"});
         const volumeVertical = createElement('div', {id:"plyr__controls_volume_vertical"});
+
+        const controlsLevel_2 = createElement('div', {id:"plyr__controls_level_2"});
         container.appendChild(controlsLevel_1);
-        controlsLevel_1.appendChild(volumeVertical);
-        controlsLevel_1.appendChild(controlsLevel_1_btns);
+        controlsLevel_1.appendChild(controlsLevel_1_left);
+        controlsLevel_1.appendChild(controlsLevel_1_right);
+        controlsLevel_1_right.appendChild(volumeVertical);
+        controlsLevel_1_right.appendChild(controlsLevel_1_btns);
         container.appendChild(controlsLevel_2);
 
         // Default item attributes

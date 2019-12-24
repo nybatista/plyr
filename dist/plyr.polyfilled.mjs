@@ -8905,18 +8905,26 @@ var controls = {
     var controlsLevel_1 = createElement('div', {
       id: "plyr__controls_level_1"
     });
+    var controlsLevel_1_left = createElement('div', {
+      id: "plyr__controls_level_1--left"
+    });
+    var controlsLevel_1_right = createElement('div', {
+      id: "plyr__controls_level_1--right"
+    });
     var controlsLevel_1_btns = createElement('div', {
       id: "plyr__controls_level_1__btns"
-    });
-    var controlsLevel_2 = createElement('div', {
-      id: "plyr__controls_level_2"
     });
     var volumeVertical = createElement('div', {
       id: "plyr__controls_volume_vertical"
     });
+    var controlsLevel_2 = createElement('div', {
+      id: "plyr__controls_level_2"
+    });
     container.appendChild(controlsLevel_1);
-    controlsLevel_1.appendChild(volumeVertical);
-    controlsLevel_1.appendChild(controlsLevel_1_btns);
+    controlsLevel_1.appendChild(controlsLevel_1_left);
+    controlsLevel_1.appendChild(controlsLevel_1_right);
+    controlsLevel_1_right.appendChild(volumeVertical);
+    controlsLevel_1_right.appendChild(controlsLevel_1_btns);
     container.appendChild(controlsLevel_2); // Default item attributes
 
     var defaultAttributes = {
