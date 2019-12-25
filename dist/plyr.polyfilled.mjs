@@ -10639,10 +10639,6 @@ var ui = {
   // Toggle controls based on state and `force` argument
   toggleControls: function toggleControls(force) {
     var controlsElement = this.elements.controls;
-    console.log("FORCE TOGGLE CONTROLS ", {
-      controls: controls,
-      force: force
-    }, this.elements);
 
     if (controlsElement && this.config.hideControls) {
       // Don't hide controls if a touch-device user recently seeked. (Must be limited to touch devices, or it occasionally prevents desktop controls from hiding.)
@@ -11190,10 +11186,6 @@ function () {
         player.muted = !player.muted;
       }, 'mute');
       this.bind(elements.buttons.mute, 'mouseenter', function () {
-        console.log("MUTE ENTERED ", {
-          defaults: defaults$1,
-          elements: elements
-        }, defaults$1.classNames.showVolume);
         toggleClass(elements.controls, defaults$1.classNames.showVolume, true);
       }, 'mute'); // Captions toggle
 
