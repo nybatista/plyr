@@ -571,9 +571,7 @@ class Listeners {
             elements.buttons.mute,
             'mouseenter',
             () => {
-                console.log("MUTE ENTERED ", {defaults, elements},defaults.classNames.showVolume);
                 toggleClass(elements.controls, defaults.classNames.showVolume, true);
-
             },
             'mute',
         );

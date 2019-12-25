@@ -249,7 +249,6 @@ const ui = {
     // Toggle controls based on state and `force` argument
     toggleControls(force) {
         const { controls: controlsElement } = this.elements;
-        console.log("FORCE TOGGLE CONTROLS ",{controls, force},this.elements);
         if (controlsElement && this.config.hideControls) {
             // Don't hide controls if a touch-device user recently seeked. (Must be limited to touch devices, or it occasionally prevents desktop controls from hiding.)
             const recentTouchSeek = this.touch && this.lastSeekTime + 2000 > Date.now();
@@ -262,11 +261,7 @@ const ui = {
             );
 
             if (mainBool===false){
-
-
-
                 toggleClass(this.elements.controls, this.config.classNames.showVolume, false);
-
             }
             // Show controls if force, loading, paused, button interaction, or recent seek, otherwise hide
             this.toggleControls(
