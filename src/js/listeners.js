@@ -10,6 +10,7 @@ import { getElement, getElements, matches, toggleClass, toggleHidden } from './u
 import { off, on, once, toggleListener, triggerEvent } from './utils/events';
 import is from './utils/is';
 import { getAspectRatio, setAspectRatio } from './utils/style';
+import defaults from './config/defaults';
 
 class Listeners {
     constructor(player) {
@@ -565,6 +566,18 @@ class Listeners {
             },
             'mute',
         );
+
+        this.bind(
+            elements.buttons.mute,
+            'mouseenter',
+            () => {
+                console.log("MUTE ENTERED ", {defaults, elements},defaults.classNames.showVolume);
+                toggleClass(elements.controls, defaults.classNames.showVolume, true);
+
+            },
+            'mute',
+        );
+
 
         // Captions toggle
         this.bind(elements.buttons.captions, 'click', () => player.toggleCaptions());

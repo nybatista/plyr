@@ -9898,7 +9898,7 @@ var defaults$1 = {
     restart: null,
     rewind: null,
     fastForward: null,
-    mute: null,
+    mute: ['mouseenter'],
     volume: null,
     captions: null,
     download: null,
@@ -9986,6 +9986,7 @@ var defaults$1 = {
     hideControls: 'plyr--hide-controls',
     isIos: 'plyr--is-ios',
     isTouch: 'plyr--is-touch',
+    showVolume: 'plyr--show-volume',
     uiSupported: 'plyr--full-ui',
     noTransition: 'plyr--no-transition',
     display: {
@@ -10638,12 +10639,22 @@ var ui = {
   // Toggle controls based on state and `force` argument
   toggleControls: function toggleControls(force) {
     var controlsElement = this.elements.controls;
+    console.log("FORCE TOGGLE CONTROLS ", {
+      controls: controls,
+      force: force
+    }, this.elements);
 
     if (controlsElement && this.config.hideControls) {
       // Don't hide controls if a touch-device user recently seeked. (Must be limited to touch devices, or it occasionally prevents desktop controls from hiding.)
-      var recentTouchSeek = this.touch && this.lastSeekTime + 2000 > Date.now(); // Show controls if force, loading, paused, button interaction, or recent seek, otherwise hide
+      var recentTouchSeek = this.touch && this.lastSeekTime + 2000 > Date.now();
+      var mainBool = Boolean(this.loading || this.paused || controlsElement.pressed || controlsElement.hover || recentTouchSeek);
 
-      this.toggleControls(Boolean(force || this.loading || this.paused || controlsElement.pressed || controlsElement.hover || recentTouchSeek));
+      if (mainBool === false) {
+        toggleClass(this.elements.controls, this.config.classNames.showVolume, false);
+      } // Show controls if force, loading, paused, button interaction, or recent seek, otherwise hide
+
+
+      this.toggleControls(Boolean(force || mainBool));
     }
   }
 };
@@ -11177,6 +11188,13 @@ function () {
 
       this.bind(elements.buttons.mute, 'click', function () {
         player.muted = !player.muted;
+      }, 'mute');
+      this.bind(elements.buttons.mute, 'mouseenter', function () {
+        console.log("MUTE ENTERED ", {
+          defaults: defaults$1,
+          elements: elements
+        }, defaults$1.classNames.showVolume);
+        toggleClass(elements.controls, defaults$1.classNames.showVolume, true);
       }, 'mute'); // Captions toggle
 
       this.bind(elements.buttons.captions, 'click', function () {

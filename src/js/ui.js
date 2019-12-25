@@ -11,6 +11,7 @@ import { ready, triggerEvent } from './utils/events';
 import i18n from './utils/i18n';
 import is from './utils/is';
 import loadImage from './utils/load-image';
+import defaults from './config/defaults';
 
 const ui = {
     addStyleHook() {
@@ -248,20 +249,29 @@ const ui = {
     // Toggle controls based on state and `force` argument
     toggleControls(force) {
         const { controls: controlsElement } = this.elements;
-
+        console.log("FORCE TOGGLE CONTROLS ",{controls, force},this.elements);
         if (controlsElement && this.config.hideControls) {
             // Don't hide controls if a touch-device user recently seeked. (Must be limited to touch devices, or it occasionally prevents desktop controls from hiding.)
             const recentTouchSeek = this.touch && this.lastSeekTime + 2000 > Date.now();
+            const mainBool = Boolean(
+                this.loading ||
+                this.paused ||
+                controlsElement.pressed ||
+                controlsElement.hover ||
+                recentTouchSeek
+            );
 
+            if (mainBool===false){
+
+
+
+                toggleClass(this.elements.controls, this.config.classNames.showVolume, false);
+
+            }
             // Show controls if force, loading, paused, button interaction, or recent seek, otherwise hide
             this.toggleControls(
                 Boolean(
-                    force ||
-                        this.loading ||
-                        this.paused ||
-                        controlsElement.pressed ||
-                        controlsElement.hover ||
-                        recentTouchSeek,
+                    force || mainBool
                 ),
             );
         }

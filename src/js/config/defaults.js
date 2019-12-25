@@ -211,7 +211,7 @@ const defaults = {
         restart: null,
         rewind: null,
         fastForward: null,
-        mute: null,
+        mute: ['mouseenter'],
         volume: null,
         captions: null,
         download: null,
@@ -346,6 +346,7 @@ const defaults = {
         hideControls: 'plyr--hide-controls',
         isIos: 'plyr--is-ios',
         isTouch: 'plyr--is-touch',
+        showVolume: 'plyr--show-volume',
         uiSupported: 'plyr--full-ui',
         noTransition: 'plyr--no-transition',
         display: {
