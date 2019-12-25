@@ -1,3 +1,8 @@
-<svg width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-    <path d="M.93506,16.374V.56543L17.01172,8.60449Zm1.5-13.38086V13.9834L13.6123,8.58105Z"></path>
+<svg width="78px" height="156px" viewBox="0 0 78 156" xmlns="http://www.w3.org/2000/svg">
+    <path d="M25,87v62H10V87H25m2-2H8v66H27V85Z" />
+    <path d="M64,87v62H49V87H64m2-2H47v66H66V85Z" />
+    <path d="M3.79932,69.48828V7.46143L66.87793,39Zm4-55.55517V63.11133l50.0122-24.17188Z" />
+
+
+
 </svg>
