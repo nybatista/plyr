@@ -1,13 +1,13 @@
 {
     "name": "core-plyr",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "A fork of plyr.io",
     "homepage": "",
     "author": "Frank Batista <nybatista@gmail.com>",
-    "main": "dist/plyr.js",
-    "module": "dist/plyr.min.mjs",
-    "jsnext:main": "dist/plyr.min.mjs",
-    "browser": "dist/plyr.min.js",
+    "main": "dist/plyr.polyfilled.js",
+    "module": "dist/plyr.polyfilled.js",
+    "jsnext:main": "dist/plyr.polyfilled.js",
+    "browser": "dist/plyr.polyfilled.js",
     "sass": "src/sass/plyr.scss",
     "style": "dist/plyr.css",
     "keywords": [
