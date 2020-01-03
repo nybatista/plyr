@@ -6,7 +6,7 @@ import captions from './captions';
 import controls from './controls';
 import support from './support';
 import browser from './utils/browser';
-import { getElement, toggleClass } from './utils/elements';
+import { createElement, getElement, toggleClass } from './utils/elements';
 import { ready, triggerEvent } from './utils/events';
 import i18n from './utils/i18n';
 import is from './utils/is';
@@ -172,6 +172,12 @@ const ui = {
 
         // Set property synchronously to respect the call order
         this.media.setAttribute('poster', poster);
+
+
+        const posterOverlay = createElement('div');
+        posterOverlay.classList.add('poster__overlay');
+        this.elements.wrapper.appendChild(posterOverlay);
+
 
         // Wait until ui is ready
         return (

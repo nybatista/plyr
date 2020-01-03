@@ -10577,7 +10577,10 @@ typeof navigator === "object" && (function (global, factory) {
       } // Set property synchronously to respect the call order
 
 
-      this.media.setAttribute('poster', poster); // Wait until ui is ready
+      this.media.setAttribute('poster', poster);
+      var posterOverlay = createElement('div');
+      posterOverlay.classList.add('poster__overlay');
+      this.elements.wrapper.appendChild(posterOverlay); // Wait until ui is ready
 
       return ready.call(this) // Load image
       .then(function () {
