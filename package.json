@@ -33,7 +33,7 @@
         "buildSprite": "gulp buildSprite && npm run-script copySprite",
         "buildSpriteBx": "gulp buildSprite && cp dist/plyr.svg ~/sites/ms85/src/static/imgs/svg/video-chrome/plyr.svg",
         "lint": "eslint src/js && npm run-script remark",
-        "copySprite": "cp dist/plyr.svg ~/sites/ms85fb/src/static/imgs/svg/video-chrome/plyr.svg",
+        "copySprite": "cp dist/plyr.svg ~/sites/ms85/src/static/imgs/svg/video-chrome/plyr.svg",
         "lint:fix": "eslint --fix src/js",
         "remark": "remark -f --use 'validate-links=repository:\"sampotts/plyr\"' '{,!(node_modules),.?**/}*.md'",
         "deploy": "yarn lint && gulp deploy"
